@@ -152,10 +152,13 @@ function Vendas() {
     // Listener para eventos de seleção do AG Grid
     function handleRowSelection(event: any) {
         console.log("Selection event:", event);
-        // Tentar obter contagem de diferentes formas
-        const count = event.api?.getSelectedRows()?.length ||
-            event.api?.getSelectedNodes()?.length ||
-            0;
+        console.log("Event detail:", event.detail);
+
+        // Stencil custom events use event.detail, not event.api
+        // ISelection interface has selection array, not records
+        const selectionInfo = event.detail;
+        const count = selectionInfo?.selection?.length || 0;
+        console.log("Selection count:", count);
         setSelectedCount(count);
     }
 
@@ -255,7 +258,7 @@ function Vendas() {
                                 <EzGrid
                                     dataUnit={duVendas}
                                     onEzDoubleClick={enterEditMode}
-                                    onEzRowSelected={handleRowSelection}
+                                    onEzSelectionChange={handleRowSelection}
                                     canEdit={false}
                                     mode="complete"
                                 />
