@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { applyPolyfills, defineCustomElements } from "@sankhyalabs/ezui/loader";
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
+import './grid-theme.css';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
