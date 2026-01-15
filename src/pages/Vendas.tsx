@@ -174,6 +174,32 @@ function Vendas() {
         }
     }, [duVendas]);
 
+    // Fix Shadow DOM labels - inject CSS after form renders
+    useEffect(() => {
+        if (currentView === VIEW_MODE.FORM) {
+            setTimeout(() => {
+                const inputs = document.querySelectorAll('ez-text-input, ez-number-input, ez-date-input, ez-select');
+                inputs.forEach((input: any) => {
+                    if (input.shadowRoot) {
+                        const label = input.shadowRoot.querySelector('label');
+                        if (label) {
+                            label.style.transform = 'translateY(-28px) scale(0.85)';
+                            label.style.transformOrigin = 'top left';
+                            label.style.background = 'white';
+                            label.style.padding = '0 4px';
+                            label.style.color = '#008561';
+                        }
+                        const inputEl = input.shadowRoot.querySelector('input');
+                        if (inputEl) {
+                            inputEl.style.paddingTop = '16px';
+                        }
+                    }
+                });
+            }, 100);
+        }
+    }, [currentView]);
+
+
     const renderGridToolbar = () => {
         if (!duVendas) return null;
         const hasSelection = selectedCount > 0;
