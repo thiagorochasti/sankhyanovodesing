@@ -111,12 +111,12 @@ function Vendas() {
         });
     }
 
-    function saveLoaderVendas(dataUnit, changes) {
+    function saveLoaderVendas(dataUnit: any, changes: any) {
         return new Promise((resolve) => {
             setTimeout(() => {
-                let dataUnitRecords = [];
+                let dataUnitRecords: any[] = [];
 
-                changes.forEach(change => {
+                changes.forEach((change: any) => {
                     let { record, updatingFields, operation } = change;
 
                     // Atribui um ID caso um novo registro seja adicionado
