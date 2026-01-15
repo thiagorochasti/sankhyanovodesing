@@ -61,6 +61,8 @@
   line-height: 1.5 !important;
   color: #1c222b !important;
   border-right: 1px solid #f0f2f5 !important;
+  display: flex !important;
+  align-items: center !important;
 }
 
 .ag-cell:focus {
@@ -68,9 +70,22 @@
   outline-offset: -2px !important;
 }
 
-/* Checkbox Selection */
+/* Checkbox Selection - Centered */
+.ag-cell-wrapper {
+  display: flex !important;
+  align-items: center !important;
+  height: 100% !important;
+}
+
+.ag-selection-checkbox {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
 .ag-checkbox-input-wrapper {
   border-radius: 4px !important;
+  margin: 0 !important;
 }
 
 .ag-checkbox-input-wrapper.ag-checked {
