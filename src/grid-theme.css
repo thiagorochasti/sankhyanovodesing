@@ -339,3 +339,95 @@ ez-form input:not(:placeholder-shown) + label {
 ez-form input {
   padding-top: 12px !important;
 }
+/* ==================== SHADOW DOM FIX - Labels do EzForm ==================== */
+
+/* Aplicar estilos aos par
+
+ts expostos do Shadow DOM */
+ez-text-input::part(label),
+ez-number-input::part(label),
+ez-date-input::part(label) {
+  transform: translateY(-20px) scale(0.85) !important;
+  color: #008561 !important;
+}
+
+/* Força padding nos inputs */
+ez-text-input,
+ez-number-input,
+ez-date-input,
+ez-select {
+  --input-padding-top: 16px !important;
+  --label-float-distance: -28px !important;
+  margin-bottom: 20px !important;
+}
+
+/* ==================== RESPONSIVIDADE ==================== */
+
+/* Tablet */
+@media (max-width: 1200px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  .charts-section {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Mobile Landscape */
+@media (max-width: 768px) {
+  .dashboard-container {
+    flex-direction: column;
+  }
+  
+  .sidebar {
+    width: 100% !important;
+    padding: 12px !important;
+  }
+  
+  .main-content {
+    padding: 16px !important;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+  
+  .grid-toolbar {
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+  }
+  
+  .grid-action-btn {
+    padding: 6px 10px !important;
+    font-size: 12px !important;
+  }
+  
+  .chart-card {
+    padding: 16px !important;
+  }
+  
+  .ag-theme-alpine {
+    font-size: 12px !important;
+  }
+}
+
+/* Mobile Portrait */
+@media (max-width: 480px) {
+  .header-title {
+    font-size: 1.5rem !important;
+  }
+  
+  .header-subtitle {
+    font-size: 0.875rem !important;
+  }
+  
+  .grid-action-btn span {
+    display: none !important; /* Hide icons on very small screens */
+  }
+  
+  .toolbar-separator {
+    display: none !important;
+  }
+}

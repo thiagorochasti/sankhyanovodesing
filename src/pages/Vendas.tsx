@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { EzGrid, EzButton, EzViewStack, EzForm, EzIcon } from '@sankhyalabs/ezui/react/components';
+import React, { useState, useEffect } from 'react';
+import { EzGrid, EzForm } from '@sankhyalabs/ezui/react/components';
 import { DataUnit, StringUtils } from '@sankhyalabs/core';
 
 const VENDAS_METADATA = {
@@ -38,6 +38,7 @@ function Vendas() {
     const [currentView, setCurrentView] = useState<number>(VIEW_MODE.GRID);
     const [isInserting, setIsInserting] = useState(false);
     const [isUpdating, setIsUpdating] = useState(false);
+    const [selectedCount, setSelectedCount] = useState(0); // Estado para contar seleção
 
     function onViewModeChange(viewMode: number) {
         setCurrentView(viewMode);
@@ -49,7 +50,7 @@ function Vendas() {
     }
 
     async function onCopyRecords() {
-        if (!duVendas || !duVendas.getSelectionInfo().records.length) return;
+        if (!duVendas) return;
         await duVendas.copySelected();
         await duVendas.loadData();
     }
@@ -148,6 +149,16 @@ function Vendas() {
         onViewModeChange(VIEW_MODE.GRID);
     }
 
+    // Listener para eventos de seleção do AG Grid
+    function handleRowSelection(event: any) {
+        console.log("Selection event:", event);
+        // Tentar obter contagem de diferentes formas
+        const count = event.api?.getSelectedRows()?.length ||
+            event.api?.getSelectedNodes()?.length ||
+            0;
+        setSelectedCount(count);
+    }
+
     useEffect(() => {
         const du = new DataUnit();
         setDuVendas(du);
@@ -162,7 +173,7 @@ function Vendas() {
 
     const renderGridToolbar = () => {
         if (!duVendas) return null;
-        const hasSelection = duVendas.getSelectionInfo().records.length > 0;
+        const hasSelection = selectedCount > 0;
 
         return (
             <div className="grid-toolbar" style={{ marginBottom: '16px' }}>
@@ -217,6 +228,12 @@ function Vendas() {
                     <span className="btn-icon">🔄</span>
                     Atualizar
                 </button>
+
+                {hasSelection && (
+                    <span style={{ marginLeft: '12px', color: '#626e82', fontSize: '13px' }}>
+                        {selectedCount} selecionado(s)
+                    </span>
+                )}
             </div>
         );
     };
@@ -238,6 +255,7 @@ function Vendas() {
                                 <EzGrid
                                     dataUnit={duVendas}
                                     onEzDoubleClick={enterEditMode}
+                                    onEzRowSelected={handleRowSelection}
                                     canEdit={false}
                                     mode="complete"
                                 />
