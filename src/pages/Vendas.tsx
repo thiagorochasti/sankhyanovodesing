@@ -161,7 +161,8 @@ function Vendas() {
     }, [duVendas]);
 
     const renderGridToolbar = () => {
-        const hasSelection = duVendas?.getSelectionInfo().records.length > 0;
+        if (!duVendas) return null;
+        const hasSelection = duVendas.getSelectionInfo().records.length > 0;
 
         return (
             <div className="grid-toolbar" style={{ marginBottom: '16px' }}>
