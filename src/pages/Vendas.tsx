@@ -142,7 +142,7 @@ function Vendas() {
     }
 
     // Gera um ID único para um novo registro
-    function generateUniqueId(updatingFields) {
+    function generateUniqueId(updatingFields: any) {
         return StringUtils.hashCode(`${updatingFields["CLIENTE"] + updatingFields["PRODUTO"]}`) + Math.floor(Math.random() * 200000);
     }
 
