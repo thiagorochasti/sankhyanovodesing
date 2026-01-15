@@ -275,7 +275,6 @@
   background-color: #f0f7f4;
   border-color: #008561;
   color: #008561;
-  transform: translateY(-1px);
   box-shadow: 0 2px 4px rgba(0, 133, 97, 0.1);
 }
 
@@ -285,8 +284,10 @@
 }
 
 .grid-action-btn:disabled {
-  opacity: 0.5;
+  opacity: 0.4;
   cursor: not-allowed;
+  background-color: #f5f5f5;
+  color: #c4c7cf;
 }
 
 .grid-action-btn-primary {
@@ -311,6 +312,10 @@
   background-color: #ffebee;
   color: #c62828;
   border-color: #c62828;
+}
+
+color: #c62828;
+border-color: #c62828;
 }
 
 .btn-icon {

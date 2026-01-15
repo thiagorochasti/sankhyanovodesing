@@ -6,14 +6,14 @@ const VENDAS_METADATA = {
     name: "vendas",
     label: "Vendas",
     fields: [
-        { name: "ID", label: "Nº Venda", dataType: "NUMBER", userInterface: "INTEGERNUMBER", readOnly: true, required: false },
-        { name: "DATA", label: "Data", dataType: "TEXT", userInterface: "TEXT", readOnly: false, required: true },
-        { name: "CLIENTE", label: "Cliente", dataType: "TEXT", userInterface: "TEXT", readOnly: false, required: true },
-        { name: "PRODUTO", label: "Produto", dataType: "TEXT", userInterface: "TEXT", readOnly: false, required: true },
-        { name: "QTD", label: "Quantidade", dataType: "NUMBER", userInterface: "INTEGERNUMBER", readOnly: false, required: true },
-        { name: "VALOR_UNIT", label: "Valor Unitário", dataType: "NUMBER", userInterface: "DECIMALNUMBER", readOnly: false, required: true },
-        { name: "TOTAL", label: "Total", dataType: "NUMBER", userInterface: "DECIMALNUMBER", readOnly: true, required: false },
-        { name: "STATUS", label: "Status", dataType: "TEXT", userInterface: "TEXT", readOnly: false, required: true }
+        { name: "ID", label: "Nº Venda", dataType: "NUMBER", userInterface: "INTEGERNUMBER", readOnly: true, required: false, sortable: true },
+        { name: "DATA", label: "Data", dataType: "TEXT", userInterface: "TEXT", readOnly: false, required: true, sortable: true },
+        { name: "CLIENTE", label: "Cliente", dataType: "TEXT", userInterface: "TEXT", readOnly: false, required: true, sortable: true },
+        { name: "PRODUTO", label: "Produto", dataType: "TEXT", userInterface: "TEXT", readOnly: false, required: true, sortable: true },
+        { name: "QTD", label: "Quantidade", dataType: "NUMBER", userInterface: "INTEGERNUMBER", readOnly: false, required: true, sortable: true },
+        { name: "VALOR_UNIT", label: "Valor Unitário", dataType: "NUMBER", userInterface: "DECIMALNUMBER", readOnly: false, required: true, sortable: true },
+        { name: "TOTAL", label: "Total", dataType: "NUMBER", userInterface: "DECIMALNUMBER", readOnly: true, required: false, sortable: true },
+        { name: "STATUS", label: "Status", dataType: "TEXT", userInterface: "TEXT", readOnly: false, required: true, sortable: true }
     ]
 };
 
@@ -70,7 +70,7 @@ function Vendas() {
         setCurrentView(VIEW_MODE.GRID);
     }
 
-    function initDataUnit() {
+    async function initDataUnit() {
         if (!duVendas) return;
         duVendas.metadataLoader = metadataLoaderVendas as any;
         duVendas.dataLoader = dataLoaderVendas as any;
