@@ -231,3 +231,81 @@
         font-size: 13px !important;
     }
 }
+
+/* Toolbar de Ações do Grid */
+.grid-toolbar {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 4px 0;
+}
+
+.grid-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background-color: white;
+  color: #626e82;
+  border: 1px solid #dce0e8;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+.grid-action-btn:hover:not(:disabled) {
+  background-color: #f0f7f4;
+  border-color: #008561;
+  color: #008561;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 133, 97, 0.1);
+}
+
+.grid-action-btn:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.grid-action-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.grid-action-btn-primary {
+  background-color: #008561;
+  color: white;
+  border-color: #008561;
+  font-weight: 600;
+}
+
+.grid-action-btn-primary:hover:not(:disabled) {
+  background-color: #006b4d;
+  border-color: #006b4d;
+  color: white;
+}
+
+.grid-action-btn-danger {
+  color: #DA4453;
+  border-color: #DA4453;
+}
+
+.grid-action-btn-danger:hover:not(:disabled) {
+  background-color: #ffebee;
+  color: #c62828;
+  border-color: #c62828;
+}
+
+.btn-icon {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.toolbar-separator {
+  width: 1px;
+  height: 24px;
+  background-color: #dce0e8;
+  margin: 0 4px;
+}
